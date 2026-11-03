@@ -1,5 +1,5 @@
 @echo off
-set "LOCAL_VERSION=1.10.3"
+set "LOCAL_VERSION=1.10.4"
 
 :: External commands
 if "%~1"=="status_zapret" (
@@ -554,9 +554,9 @@ if not exist "%BIN_PATH%\*.sys" (
 
 :: VPN
 set "VPN_SERVICES="
-sc query | findstr /I "VPN" > nul
+sc query | findstr /I "VPN HappService" > nul
 if !errorlevel!==0 (
-    for /f "tokens=2 delims=:" %%A in ('sc query ^| findstr /I "VPN"') do (
+    for /f "tokens=2 delims=:" %%A in ('sc query ^| findstr /I "VPN HappService"') do (
         if not defined VPN_SERVICES (
             set "VPN_SERVICES=!VPN_SERVICES!%%A"
         ) else (
